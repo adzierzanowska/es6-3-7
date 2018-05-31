@@ -1,14 +1,13 @@
-
 class Stopwatch extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
+        this.running = false
         this.state = {
-            running: false,
             times: {
                 minutes: 0,
                 seconds: 0,
                 miliseconds: 0
-            }   
+            }
         }
         this.start = this.start.bind(this);
         this.stop = this.stop.bind(this);
@@ -16,7 +15,7 @@ class Stopwatch extends React.Component {
     }
 
     reset() {
-        this.setState ({
+        this.setState({
             times: {
                 minutes: 0,
                 seconds: 0,
@@ -27,15 +26,14 @@ class Stopwatch extends React.Component {
 
     format(times) {
         return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
-    
-    }
 
-    pad0(value) {
-        let result = value.toString();
-        if (result.length < 2) {
-            result = '0' + result;
+        function pad0(value) {
+            let result = value.toString();
+            if (result.length < 2) {
+                result = '0' + result;
+            }
+            return result;
         }
-        return result;
     }
 
     start() {
@@ -69,16 +67,10 @@ class Stopwatch extends React.Component {
         this.running = false;
         clearInterval(this.watch);
     }
-    
-      /*resetResult() {
-        let results = document.getElementById('results');
-        if (results.firstChild.innerHTML === 'TIMER RESET') return;
-        //results.insertAdjacentHTML('afterbegin', '<li class="results">TIMER RESET</li>');
-      } */
 
-      render() {
+    render() {
         return (
-            <div>    
+            <div>
                 <div id="controls">
                     <a href="#" id="start" onClick={this.start}>Start</a>
                     <a href="#" id="stop" onClick={this.stop}>Stop</a>
@@ -92,23 +84,6 @@ class Stopwatch extends React.Component {
             </div>
         )
     }
-    }
-    
-    
-   /* const stopwatch = new Stopwatch(
-    document.querySelector('.stopwatch'));
-    
-    let startButton = document.getElementById('start');
-    startButton.addEventListener('click', () => stopwatch.start());
-    
-    let stopButton = document.getElementById('stop');
-    stopButton.addEventListener('click', () => stopwatch.stop());
-    
-    let resetButton = document.getElementById('reset');
-    resetButton.addEventListener('click', () => {
-      stopwatch.stop();
-      stopwatch.reset();
-      stopwatch.print();
-    }); */
-    
-    ReactDOM.render(<Stopwatch />, document.getElementById('app'));
+}
+
+ReactDOM.render(<Stopwatch />, document.getElementById('app')); 

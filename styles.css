@@ -5,7 +5,7 @@ body {
     font-family: 'Alegreya', serif;
 }
 
-nav .button {
+a {
     font-size: 30px;
     text-decoration: none;
     text-transform: uppercase;
@@ -13,13 +13,13 @@ nav .button {
     padding: 10px;
     color: rgb(41, 211, 197);
     border: 0.5px solid;
-}
+} 
 
-.stopwatch {
+#stopwatch {
     font-size: 50px;
     margin: 15px auto;
     padding: 5px;
     text-align: center;
     background-color: rgba(207, 243, 241, 0.774);
     width: 300px;
-}
+} 

@@ -16,8 +16,8 @@ var Stopwatch = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Stopwatch.__proto__ || Object.getPrototypeOf(Stopwatch)).call(this, props));
 
+        _this.running = false;
         _this.state = {
-            running: false,
             times: {
                 minutes: 0,
                 seconds: 0,
@@ -45,15 +45,14 @@ var Stopwatch = function (_React$Component) {
         key: "format",
         value: function format(times) {
             return pad0(times.minutes) + ":" + pad0(times.seconds) + ":" + pad0(Math.floor(times.miliseconds));
-        }
-    }, {
-        key: "pad0",
-        value: function pad0(value) {
-            var result = value.toString();
-            if (result.length < 2) {
-                result = '0' + result;
+
+            function pad0(value) {
+                var result = value.toString();
+                if (result.length < 2) {
+                    result = '0' + result;
+                }
+                return result;
             }
-            return result;
         }
     }, {
         key: "start",
@@ -95,13 +94,6 @@ var Stopwatch = function (_React$Component) {
             this.running = false;
             clearInterval(this.watch);
         }
-
-        /*resetResult() {
-          let results = document.getElementById('results');
-          if (results.firstChild.innerHTML === 'TIMER RESET') return;
-          //results.insertAdjacentHTML('afterbegin', '<li class="results">TIMER RESET</li>');
-        } */
-
     }, {
         key: "render",
         value: function render() {
@@ -139,21 +131,5 @@ var Stopwatch = function (_React$Component) {
 
     return Stopwatch;
 }(React.Component);
-
-/* const stopwatch = new Stopwatch(
- document.querySelector('.stopwatch'));
- 
- let startButton = document.getElementById('start');
- startButton.addEventListener('click', () => stopwatch.start());
- 
- let stopButton = document.getElementById('stop');
- stopButton.addEventListener('click', () => stopwatch.stop());
- 
- let resetButton = document.getElementById('reset');
- resetButton.addEventListener('click', () => {
-   stopwatch.stop();
-   stopwatch.reset();
-   stopwatch.print();
- }); */
 
 ReactDOM.render(React.createElement(Stopwatch, null), document.getElementById('app'));
